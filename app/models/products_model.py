@@ -2,6 +2,8 @@ import pymongo
 import os 
 from datetime import datetime
 
+
+
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
@@ -11,6 +13,7 @@ time_of_creation = str(datetime.now().strftime("%d/%m/%Y %H:%M"))
 
 class Products():
     valid_keys = ["name", "image", "price"]
+
     def __init__(self,name,price, image='', created_at=time_of_creation, updated_at = None) -> None:
         self.name = name
         self.price = price 
@@ -22,17 +25,17 @@ class Products():
     def __repr__(self) -> str:
         return f"Nome: {self.name} | Preço: {self.price} | Created: {self.created_at} | Updated : {self.updated_at}"
 
+
     def generate_id(self):
         if not len(list(db.get_collection(COLLECTION).find())):
             id = 1
         else:
             id = list(db.get_collection(COLLECTION).find())[-1]["id"] +1
         return id
-    
+
+
     def create_product(self):
         db.get_collection(COLLECTION).insert_one(self.__dict__)
-
-
 
 
     @staticmethod
@@ -52,6 +55,11 @@ class Products():
     def get_all_products():
         all_products = db.get_collection(COLLECTION).find()
         return all_products
+
+    @staticmethod
+    def delete_product(id):
+        deleted_product = db.get_collection(COLLECTION).find_one_and_delete({"id":id})
+        return deleted_product
 
 
     @classmethod

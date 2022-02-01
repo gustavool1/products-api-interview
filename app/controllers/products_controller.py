@@ -46,5 +46,12 @@ def update_product(id):
         return {"msg":"Invalid id"}, HTTPStatus.NOT_FOUND
 
 def delete_product(id):
-    print(id)
-    return 'a'
+    try:
+        deleted_product = Products.delete_product(id)
+        if not deleted_product:
+            raise InvalidIdError
+        Products.serialize_product(deleted_product)
+        return deleted_product, HTTPStatus.OK
+        
+    except InvalidIdError:
+        return {"msg":"Invalid id"}, HTTPStatus.NOT_FOUND
