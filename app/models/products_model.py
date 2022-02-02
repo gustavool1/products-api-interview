@@ -9,7 +9,9 @@ load_dotenv()
 
 USER =  os.getenv("USER")
 PASSWORD = os.getenv("PASSWORD")
-client = pymongo.MongoClient(f"mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mongodb.net/interview-test?retryWrites=true&w=majority")
+# f"mongodb+srv://gustavo:{PASSWORD}@cluster0.yrtgs.mongodb.net/test"
+
+client = pymongo.MongoClient(f"mongodb+srv://gustavo:{PASSWORD}@cluster0.yrtgs.mongodb.net/test")
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
 print(len(DATABASE), '---TESTANDOOOOO')
