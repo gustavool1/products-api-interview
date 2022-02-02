@@ -3,8 +3,9 @@ import os
 from datetime import datetime
 
 
-
-client = pymongo.MongoClient("mongodb+srv://gustavo:1234@cluster0.yrtgs.mongodb.net/interview-test?retryWrites=true&w=majority")
+USER =  os.getenv("USER")
+PASSWORD = os.getenv("PASSWORD")
+client = pymongo.MongoClient(f"mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mongodb.net/interview-test?retryWrites=true&w=majority")
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
 db = client[DATABASE]
