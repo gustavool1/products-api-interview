@@ -11,7 +11,7 @@ USER =  os.getenv("USER")
 PASSWORD = os.getenv("PASSWORD")
 # f"mongodb+srv://gustavo:{PASSWORD}@cluster0.yrtgs.mongodb.net/test"
 
-client = pymongo.MongoClient(f"mongodb+srv://gustavo:{PASSWORD}@cluster0.yrtgs.mongodb.net/test")
+client = pymongo.MongoClient(f'mongodb+srv://gustavo:{PASSWORD}@cluster0.yrtgs.mongodb.net/test')
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
 print(len(DATABASE), '---TESTANDOOOOO')
