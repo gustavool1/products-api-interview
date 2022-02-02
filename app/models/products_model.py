@@ -1,15 +1,15 @@
 import pymongo 
 import os 
 from datetime import datetime
-
-
+from dotenv import load_dotenv
+load_dotenv()
 USER =  os.getenv("USER")
 PASSWORD = os.getenv("PASSWORD")
 client = pymongo.MongoClient(f"mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mongodb.net/interview-test?retryWrites=true&w=majority")
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
+print(DATABASE, '---TESTANDOOOOO')
 db = client[DATABASE]
-
 time_of_creation = str(datetime.now().strftime("%d/%m/%Y %H:%M"))
 
 class Products():
