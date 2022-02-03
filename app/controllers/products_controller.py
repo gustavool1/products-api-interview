@@ -8,19 +8,19 @@ from datetime import datetime
 def create_product():
     try:
         data = request.get_json()
-        for character in data["price"]:
-            if int(character) not in [0,1,2,3,4,5,6,7,8,9]:
-                raise PriceMUstBeNumberError 
-        product = Products(**data)
-        product.create_product()
-        Products.serialize_product(product.__dict__)
+        if type(data["price"]) is int or type(data["price"]) is float:
+            product = Products(**data)
+            product.create_product()
+            Products.serialize_product(product.__dict__)
+        else:
+            raise PriceMUstBeNumberError
 
         return product.__dict__, HTTPStatus.CREATED
     except TypeError:
         return {"msg":"Missing required fields or given more than necessary"}, HTTPStatus.BAD_REQUEST
     
     except PriceMUstBeNumberError:
-        {"msg":"Price must be a number or a string containing only numbers."},HTTPStatus.BAD_REQUEST    
+        {"msg":"Price must be a number"},HTTPStatus.BAD_REQUEST    
 def get_all_products():
     all_products = list(Products.get_all_products())
     Products.serialize_product(all_products)
