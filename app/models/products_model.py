@@ -45,19 +45,15 @@ class Products():
 
     def create_product(self):
         db.get_collection(COLLECTION).insert_one(self.__dict__)
-
+    
 
     @staticmethod
     def serialize_product(data):
         if type(data) is list:
             for post in data:
-                post.update({"_id":str(post["_id"])})
-
-        if type(data) is Products:
-            data._id = str(data._id)
-
-        if type(data) is dict:
-            data.update({"_id":str(data["_id"])})
+                del post["_id"]
+        elif type(data) is dict:
+            del data["_id"]
 
 
     @staticmethod
