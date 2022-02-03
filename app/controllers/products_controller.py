@@ -10,7 +10,7 @@ def create_product():
         
         product = Products(**data)
         product.create_product()
-        Products.serialize_product(product)
+        Products.serialize_product(product.__dict__)
 
         return product.__dict__, HTTPStatus.CREATED
     except TypeError:
