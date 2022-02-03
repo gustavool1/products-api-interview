@@ -12,15 +12,16 @@ def create_product():
             product = Products(**data)
             product.create_product()
             Products.serialize_product(product.__dict__)
+            return product.__dict__, HTTPStatus.CREATED
         else:
             raise PriceMUstBeNumberError
 
-        return product.__dict__, HTTPStatus.CREATED
     except TypeError:
         return {"msg":"Missing required fields or given more than necessary"}, HTTPStatus.BAD_REQUEST
     
     except PriceMUstBeNumberError:
         {"msg":"Price must be a number"},HTTPStatus.BAD_REQUEST    
+        
 def get_all_products():
     all_products = list(Products.get_all_products())
     Products.serialize_product(all_products)
