@@ -1,0 +1,2 @@
+class PriceMUstBeNumberError(Exception):
+    pass

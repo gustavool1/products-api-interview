@@ -25,7 +25,7 @@ class Products():
 
     def __init__(self,name,price, image='', created_at=time_of_creation, updated_at = None) -> None:
         self.name = name
-        self.price = price 
+        self.price = float(price)
         self.image = image
         self.created_at = created_at
         self.updated_at = updated_at
