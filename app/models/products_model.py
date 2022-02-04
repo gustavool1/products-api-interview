@@ -3,8 +3,6 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 
-
-
 load_dotenv()
 
 USER =  os.getenv("USER")
@@ -13,7 +11,6 @@ client = pymongo.MongoClient(f'mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mo
 # client = pymongo.MongoClient("mongodb://localhost:27017/")
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
-# client = pymongo.MongoClient(db=DATABASE, username=USER, password=PASSWORD, host="mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mongodb.net/interview-test?retryWrites=true&w=majority")
 db = client[DATABASE]
 time_of_creation = str(datetime.now().strftime("%d/%m/%Y %H:%M"))
 
