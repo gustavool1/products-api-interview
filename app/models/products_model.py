@@ -7,8 +7,8 @@ load_dotenv()
 
 USER =  os.getenv("USER")
 PASSWORD = os.getenv("PASSWORD")
-client = pymongo.MongoClient(f'mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mongodb.net/test')
-# client = pymongo.MongoClient("mongodb://localhost:27017/")
+# client = pymongo.MongoClient(f'mongodb+srv://{USER}:{PASSWORD}@cluster0.yrtgs.mongodb.net/test')
+client = pymongo.MongoClient("mongodb://localhost:27017/")
 DATABASE = os.getenv("DATABASE")
 COLLECTION = os.getenv("COLLECTION")
 db = client[DATABASE]
